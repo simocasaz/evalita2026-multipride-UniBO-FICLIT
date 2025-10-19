@@ -57,5 +57,10 @@
 - created a function to consider frequency analysis for hashtags and emojis
 - modified plot_common function to plot relative frequencies of words, hashtags
   and emojis for better comparability
+- implemented quick and dirty solution for characteristic term analysis
+- plotted slurs frequencies
 
 **Observations:**
+
+- Some emojis seem to be informative
+- Frocia and finocchio seem to be informative words
