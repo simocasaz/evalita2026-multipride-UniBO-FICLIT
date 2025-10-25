@@ -100,8 +100,7 @@
 
 ## 📅 2025-10-22
 
-**Focus:**  
-**Work done:**
+**Focus:** Platform exploration and Huggingface studying **Work done:**
 
 - Finished reading Kaggle notebook guidelines (Docker containers explanation).
 - Considered Kaggle vs Colab.
@@ -110,6 +109,19 @@
 
 **Observations:**
 
-- I'll try with Kaggle first, if I have problems I'll switch to Google Colab
+- I'll try with Kaggle first, if I have problems I'll switch to Google Colab.
 - I can use Huggingface Datasets and Transformers to split the dataset into
   train and test, tokenize and train.
+
+## 📅 2025-10-24
+
+**Focus:**  
+**Work done:**
+
+- Started to write Training Notebook
+
+**Observations:**
+
+- The stratified attribute of train_test_split works only if the selected column
+  is of type ClassLabel. Now I'm not using stratified, but I should do it in the
+  future to avoid imbalanced label between train and val sets.
