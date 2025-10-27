@@ -115,13 +115,55 @@
 
 ## 📅 2025-10-24
 
-**Focus:**  
-**Work done:**
+**Focus:** Training notebook and src directory. **Work done:**
 
-- Started to write Training Notebook
+- Started to write Training Notebook.
+- Created files in src directory.
 
 **Observations:**
 
 - The stratified attribute of train_test_split works only if the selected column
   is of type ClassLabel. Now I'm not using stratified, but I should do it in the
   future to avoid imbalanced label between train and val sets.
+
+## 📅 2025-10-25
+
+**Focus:** Preprocessing functions. **Work done:**
+
+- Wrote tokenizer loader and tokenization functions
+- applied the functions in the training notebook
+
+**Observations:**
+
+- I changed the label column to LabelClass, thus I can use stratified in
+  test_train_split
+- I have to understand how big the functions in the preprocessing file should
+  be. I can refactor later anyway.
+
+## 📅 2025-10-26
+
+**Focus:**  
+**Work done:**
+
+**Observations:**
+
+## 📅 2025-10-27
+
+**Focus:**  
+**Work done:**
+
+**Observations:**
+
+## 📅 2025-10-28
+
+**Focus:**  
+**Work done:**
+
+**Observations:**
+
+## 📅 2025-10-29
+
+**Focus:**  
+**Work done:**
+
+**Observations:**
