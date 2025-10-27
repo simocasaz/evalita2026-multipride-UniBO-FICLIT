@@ -2,7 +2,8 @@
 
 ## 📅 2025-10-13
 
-**Focus:** Project setup and repo reorganization  
+**Focus:** Project setup and repo reorganization
+
 **Work done:**
 
 - Refactored repo structure.
@@ -23,7 +24,8 @@
 
 ## 📅 2025-10-14
 
-**Focus:** Lexical analysis  
+**Focus:** Lexical analysis.
+
 **Work done:**
 
 - Fixed urls problem.
@@ -34,7 +36,8 @@
 
 ## 📅 2025-10-16
 
-**Focus:** Lexical analysis  
+**Focus:** Lexical analysis.
+
 **Work done:**
 
 - Refactored some code into functions.
@@ -55,7 +58,8 @@
 
 ## 📅 2025-10-19
 
-**Focus:** Lexical analysis and characteristic term analysis  
+**Focus:** Lexical analysis and characteristic term analysis.
+
 **Work done:**
 
 - Created a function to consider frequency analysis for hashtags and emojis.
@@ -73,7 +77,8 @@
 
 ## 📅 2025-10-20
 
-**Focus:** Environment set up for model training  
+**Focus:** Environment set up for model training.
+
 **Work done:**
 
 - Installed torch, sentencepiece, transformers.
@@ -83,13 +88,14 @@
 **Observations:**
 
 - I don't think I'll need fairseq. I can use huggingface transformers to handle
-  the model training
+  the model training.
 
 ---
 
 ## 📅 2025-10-21
 
-**Focus:** understanding training pipeline and Kaggle notebook  
+**Focus:** understanding training pipeline and Kaggle notebook.
+
 **Work done:**
 
 - Understood how to set training pipeline.
@@ -100,7 +106,9 @@
 
 ## 📅 2025-10-22
 
-**Focus:** Platform exploration and Huggingface studying **Work done:**
+**Focus:** Platform exploration and Huggingface studying.
+
+**Work done:**
 
 - Finished reading Kaggle notebook guidelines (Docker containers explanation).
 - Considered Kaggle vs Colab.
@@ -113,9 +121,13 @@
 - I can use Huggingface Datasets and Transformers to split the dataset into
   train and test, tokenize and train.
 
+---
+
 ## 📅 2025-10-24
 
-**Focus:** Training notebook and src directory. **Work done:**
+**Focus:** Training notebook and src directory.
+
+**Work done:**
 
 - Started to write Training Notebook.
 - Created files in src directory.
@@ -126,9 +138,13 @@
   is of type ClassLabel. Now I'm not using stratified, but I should do it in the
   future to avoid imbalanced label between train and val sets.
 
+---
+
 ## 📅 2025-10-25
 
-**Focus:** Preprocessing functions. **Work done:**
+**Focus:** Preprocessing functions.
+
+**Work done:**
 
 - Wrote tokenizer loader and tokenization functions
 - applied the functions in the training notebook
@@ -140,12 +156,16 @@
 - I have to understand how big the functions in the preprocessing file should
   be. I can refactor later anyway.
 
+---
+
 ## 📅 2025-10-26
 
 **Focus:**  
 **Work done:**
 
 **Observations:**
+
+---
 
 ## 📅 2025-10-27
 
@@ -154,12 +174,16 @@
 
 **Observations:**
 
+---
+
 ## 📅 2025-10-28
 
 **Focus:**  
 **Work done:**
 
 **Observations:**
+
+---
 
 ## 📅 2025-10-29
 
