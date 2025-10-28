@@ -146,33 +146,46 @@
 
 **Work done:**
 
-- Wrote tokenizer loader and tokenization functions
-- applied the functions in the training notebook
+- Wrote tokenizer loader and tokenization functions.
+- Applied the functions in the training notebook.
 
 **Observations:**
 
 - I changed the label column to LabelClass, thus I can use stratified in
-  test_train_split
+  test_train_split.
 - I have to understand how big the functions in the preprocessing file should
   be. I can refactor later anyway.
 
 ---
 
-## 📅 2025-10-26
+## 📅 2025-10-27
 
-**Focus:**  
+**Focus:** Study datasets, transformers and evaluation.
+
 **Work done:**
+
+- Studied all the pipeline on hugginface.
+- Fixed the problem with src imports.
 
 **Observations:**
 
 ---
 
-## 📅 2025-10-27
+## 📅 2025-10-28
 
-**Focus:**  
+**Focus:** Evaluation, Trainer and pipeline test.
+
 **Work done:**
 
+- Wrote evaluation function.
+- Applied evaluation function to training notebook.
+- Applied dinamic padding.
+- Tested the whole pipeline in the training notebook.
+
 **Observations:**
+
+- The training seems to work, but there is a problem with the evaluation
+  function. I need to better study how evaluation works.
 
 ---
 
