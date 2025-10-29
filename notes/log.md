@@ -189,18 +189,35 @@
 
 ---
 
-## 📅 2025-10-28
+## 📅 2025-10-29
 
-**Focus:**  
+**Focus:** Testing and Kaggle.
+
 **Work done:**
+
+- Tested the pipeline with small datasets.
+- Wrote all the code on Kaggle.
+- Studied how to interpret results.
 
 **Observations:**
 
+- The evaluation bug was probably related to the size of the datasets. I made
+  some checks and everything seems to work fine. I'll test on Kaggle with a
+  bigger dataset to be sure.
+- To check learning and metrics curves I could use wandb. I need to read some
+  documentation to understand how to use it.
+
+**Next steps:**
+
+- Upload training data on Kaggle.
+- Test the pipeline on Kaggle.
+
 ---
 
-## 📅 2025-10-29
+## 📅 2025-10-30
 
-**Focus:**  
+**Focus:** Kaggle data mounting and test
+
 **Work done:**
 
 **Observations:**
