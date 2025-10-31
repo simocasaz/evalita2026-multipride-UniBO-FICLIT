@@ -214,10 +214,27 @@
 
 ---
 
-## 📅 2025-10-30
+## 📅 2025-10-31
 
-**Focus:** Kaggle data mounting and test
+**Focus:** Kaggle data mounting and test.
 
 **Work done:**
 
+- Uploaded the code on Kaggle.
+- Tested on Kaggle, problems with libraries compatibility.
+- Switched to Colab, tested the pipeline. It works fine.
+- Set wandb on Colab for metrics visualization.
+
 **Observations:**
+
+- The run on Colab worked fine. The metrics showed that there is a problem of
+  overfitting, probably due to the small training dataset. I need to get some
+  visualization of the metrics and then try to understand how to fight
+  overfitting.
+
+**Next steps:**
+
+- Change Hyperparameters to avoid overfitting.
+- Test pipeline on Colab with metrics visualization (wandb).
+
+---
