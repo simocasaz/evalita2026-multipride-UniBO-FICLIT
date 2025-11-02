@@ -209,3 +209,9 @@ __marimo__/
 # results and processed data
 /data/processed/
 /results/
+
+# wandb
+wandb/
+
+# models
+/model/
