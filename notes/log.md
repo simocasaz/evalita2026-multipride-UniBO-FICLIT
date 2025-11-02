@@ -231,10 +231,61 @@
   overfitting, probably due to the small training dataset. I need to get some
   visualization of the metrics and then try to understand how to fight
   overfitting.
+- First run on Colab has learning rate 5e-5, linear scheduler with no warmup,
+  batch size 16, mixed precision.
 
 **Next steps:**
 
-- Change Hyperparameters to avoid overfitting.
 - Test pipeline on Colab with metrics visualization (wandb).
 
 ---
+
+## 📅 2025-11-01
+
+**Focus:** Visualization and local test.
+
+**Work done:**
+
+- Successfully used wandb to visualize metrics.
+- Tested the training pipeline locally. Everything works fine.
+
+**Observations:**
+
+- First local run has learning rate 5e-5, linear scheduler with no warmup, batch
+  size 16, mixed precision.
+- There's a problem with Pylance detecting missing imports in VSCODE. The code
+  works fine.
+
+**Next steps:**
+
+- Solve the imports problem.
+- Change Hyperparameters to avoid overfitting.
+
+---
+
+## 📅 2025-11-01
+
+**Focus:** Imports problems and overfitting solution.
+
+**Work done:**
+
+- Solved the imports issue by using setuptools compact mode.
+
+**Observations:**
+
+- Second local run has learning rate 2e-5, linear scheduler with 10 steps
+  warm-up, batch size 16, mixed precision.
+
+**Next steps:**
+
+---
+
+## 📅 2025-11-01
+
+**Focus:** Imports problems and overfitting solution.
+
+**Work done:**
+
+**Observations:**
+
+**Next steps:**
