@@ -1,3 +1,29 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+# Metadata from [metadata] in setup.cfg
+name = "multipride"
+version = "0.1"
+authors = [
+    { name = "Simone Casazza" },
+]
+description = "NLP system for MultiPRIDE (EVALITA 2026)"
+license = { text = "MIT" } # Using the modern PEP 621 format for license
+readme = "README.md" # Assumes you have a README
+
+# Dependencies (You will need to add your actual runtime dependencies here)
+# For example:
+# dependencies = [
+#     "numpy",
+#     "pandas",
+#     "transformers",
+# ]
+
+# Options from [options] in setup.cfg
+requires-python = ">=3.9"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["multipride*"]
