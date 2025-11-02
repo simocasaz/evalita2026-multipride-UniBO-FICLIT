@@ -263,26 +263,31 @@
 
 ---
 
-## 📅 2025-11-01
+## 📅 2025-11-02
 
 **Focus:** Imports problems and overfitting solution.
 
 **Work done:**
 
 - Solved the imports issue by using setuptools compact mode.
+- Run model with warm-up and smaller learning rate.
+- Refactored the training notebooks by putting loading process in a function in
+  the local model.
+- Wrote function for prediction and test file creation.
 
 **Observations:**
 
 - Second local run has learning rate 2e-5, linear scheduler with 10 steps
-  warm-up, batch size 16, mixed precision.
+  warm-up, batch size 16, mixed precision. The loss curves is less erratic, but
+  the performances haven't improve.
 
 **Next steps:**
 
 ---
 
-## 📅 2025-11-01
+## 📅 2025-11-03
 
-**Focus:** Imports problems and overfitting solution.
+**Focus:**
 
 **Work done:**
 
