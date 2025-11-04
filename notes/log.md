@@ -281,16 +281,36 @@
   warm-up, batch size 16, mixed precision. The loss curves is less erratic, but
   the performances haven't improve.
 
-**Next steps:**
+---
+
+## 📅 2025-11-03
+
+**Focus:** Strategy.
+
+**Work done:**
+
+- Understood what are the next steps I could take.
+- Read paper of HaSpeeDe 2 about fine-tuning.
+
+**Observations:**
+
+- Maybe I need to use an algorithm for hyperparameters search to find the ones
+  that maximize F1.
 
 ---
 
 ## 📅 2025-11-03
 
-**Focus:**
+**Focus:** F1 type and mail to supervisor.
 
 **Work done:**
 
+- Understood that I need to use macro F1 for evaluation.
+- Wrote mail to the professor.
+
 **Observations:**
 
-**Next steps:**
+- Since I was using the wrong F1 (binary F1), I can't use the old runs as a
+  reference.
+- The macro F1 is higher. For the second run, I got F1 0.8535, precision
+  0.91554, recall 0.815
