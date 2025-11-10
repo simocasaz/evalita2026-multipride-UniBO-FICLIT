@@ -314,3 +314,13 @@
   reference.
 - The macro F1 is higher. For the second run, I got F1 0.8535, precision
   0.91554, recall 0.815
+
+---
+
+## 📅 2025-11-10
+
+**Focus:** implementing HPS
+
+**Work done:**
+
+**Observations:**
