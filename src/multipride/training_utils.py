@@ -8,6 +8,7 @@ import os
 
 
 def run_hyperparameter_search(
+    model_name,
     train_dataset,
     eval_dataset,
     wandb_project_name,
@@ -43,9 +44,9 @@ def run_hyperparameter_search(
         fp16=True,  # <-- ADDED: Enables half-precision training (FP16) for speed/memory efficiency
         # Logging & Evaluation Setup (CRITICAL for W&B and HPS)
         evaluation_strategy="steps",
-        eval_steps=50,
+        eval_steps=20,
         save_strategy="steps",
-        save_steps=50,
+        save_steps=20,
         load_best_model_at_end=True,
         metric_for_best_model="f1",
         greater_is_better=True,
@@ -77,7 +78,7 @@ def run_hyperparameter_search(
         backend="optuna",  # Specify the backend
         n_trials=15,  # Set based on your schedule (10-15 trials for Phase 1)
         # Pass a custom name function for better W&B visibility
-        hp_name=lambda trial: f"UmBERTo-Base-Trial-{trial.number}",
+        hp_name=lambda trial: f"{model_name}-Trial-{trial.number}",
     )
 
     print("\n--- HPS Complete. Best Run Found ---")
