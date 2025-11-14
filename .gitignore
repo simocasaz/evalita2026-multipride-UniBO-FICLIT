@@ -215,3 +215,6 @@ wandb/
 
 # models
 /model/
+
+# hyperparameters search results
+/hps_results/
