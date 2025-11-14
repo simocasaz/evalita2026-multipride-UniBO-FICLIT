@@ -17,6 +17,9 @@ def run_hyperparameter_search(
     compute_metrics,
     model_init,
     compute_objective,
+    n_trials,
+    output_dir,
+    logging_dir,
 ):
     """
     Sets up the Trainer and executes the HPS using Optuna and W&B.
@@ -33,8 +36,8 @@ def run_hyperparameter_search(
     # 2. Define Training Arguments
     # These settings are shared across all trials unless overridden by hp_space
     training_args = TrainingArguments(
-        output_dir="../hps_results",
-        logging_dir="../hps_logs",
+        output_dir=output_dir,
+        logging_dir=logging_dir,
         per_device_train_batch_size=32,  # This is the default, but Optuna will override
         num_train_epochs=5,  # Default, Optuna will override
         weight_decay=0.01,  # Default, Optuna will override
@@ -76,11 +79,39 @@ def run_hyperparameter_search(
         compute_objective=compute_objective,  # Your function defining the goal (Macro F1)
         direction="maximize",  # Maximize the Macro F1
         backend="optuna",  # Specify the backend
-        n_trials=10,  # Set based on your schedule (10-15 trials for Phase 1)
+        n_trials=n_trials,  # Set based on your schedule (10-15 trials for Phase 1)
         # Pass a custom name function for better W&B visibility
         hp_name=lambda trial: f"{model_name}-Trial-{trial.number}",
     )
 
     print("\n--- HPS Complete. Best Run Found ---")
     print(best_run)
-    return best_run
+
+    # --- 5. Final Retrain of the Best Model ---
+
+    # Extract the best hyperparameters
+    best_params = best_run.hyperparameters
+    print(f"\n--- Retraining Model with Best Hyperparameters: {best_params} ---")
+
+    # Update training args with the best found parameters
+    for n, v in best_params.items():
+        setattr(training_args, n, v)
+
+    # Re-initialize the Trainer with the best parameters and a fresh model
+    best_trainer = Trainer(
+        args=training_args,
+        tokenizer=tokenizer,
+        train_dataset=train_dataset,
+        eval_dataset=eval_dataset,
+        compute_metrics=compute_metrics,
+        model_init=model_init,  # Re-initializes model from scratch
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
+        data_collator=data_collator,
+    )
+
+    # Re-train the model using the optimal settings
+    best_trainer.train()
+
+    # The function now RETURNS the trainer object (containing the best model)
+    # The user is responsible for saving the model externally.
+    return best_run, best_trainer
