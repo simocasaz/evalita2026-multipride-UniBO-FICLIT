@@ -76,7 +76,7 @@ def run_hyperparameter_search(
         compute_objective=compute_objective,  # Your function defining the goal (Macro F1)
         direction="maximize",  # Maximize the Macro F1
         backend="optuna",  # Specify the backend
-        n_trials=15,  # Set based on your schedule (10-15 trials for Phase 1)
+        n_trials=10,  # Set based on your schedule (10-15 trials for Phase 1)
         # Pass a custom name function for better W&B visibility
         hp_name=lambda trial: f"{model_name}-Trial-{trial.number}",
     )
