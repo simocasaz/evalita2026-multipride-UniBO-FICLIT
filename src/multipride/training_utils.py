@@ -36,6 +36,8 @@ def run_hyperparameter_search(
     # 2. Define Training Arguments
     # These settings are shared across all trials unless overridden by hp_space
     training_args = TrainingArguments(
+        logging_strategy="steps",  # ADDED: Set logging strategy to steps
+        logging_steps=20,
         output_dir=output_dir,
         logging_dir=logging_dir,
         per_device_train_batch_size=32,  # This is the default, but Optuna will override
@@ -87,19 +89,43 @@ def run_hyperparameter_search(
     print("\n--- HPS Complete. Best Run Found ---")
     print(best_run)
 
-    # --- 5. Final Retrain of the Best Model ---
+    # --- 5. Final Retrain of the Best Model (WITH OOM FIX) ---
+
+    SAFE_BATCH_SIZE_FOR_RETRAIN = 16
 
     # Extract the best hyperparameters
     best_params = best_run.hyperparameters
-    print(f"\n--- Retraining Model with Best Hyperparameters: {best_params} ---")
+    print(f"\n--- Preparing to retrain with Best Hyperparameters: {best_params} ---")
 
     # Update training args with the best found parameters
     for n, v in best_params.items():
         setattr(training_args, n, v)
 
-    # Re-initialize the Trainer with the best parameters and a fresh model
+    # --- START: OOM FIX ---
+    # Check if the best batch size is larger than our safe limit
+    optuna_batch_size = best_params["per_device_train_batch_size"]
+
+    if optuna_batch_size > SAFE_BATCH_SIZE_FOR_RETRAIN:
+        # Calculate accumulation steps to preserve the effective batch size
+        # (e.g., if Optuna found 32 and safe is 16, this will be 2)
+        grad_acc_steps = optuna_batch_size // SAFE_BATCH_SIZE_FOR_RETRAIN
+
+        # Override the TrainingArguments with safe values
+        setattr(
+            training_args, "per_device_train_batch_size", SAFE_BATCH_SIZE_FOR_RETRAIN
+        )
+        setattr(training_args, "gradient_accumulation_steps", grad_acc_steps)
+
+        print(
+            f"Applying OOM Fix: Effective Batch Size {optuna_batch_size} (Device Batch: {SAFE_BATCH_SIZE_FOR_RETRAIN}, Grad Acc: {grad_acc_steps})"
+        )
+        # --- END: OOM FIX ---
+
+    # Re-initialize the Trainer with the (now OOM-safe) best parameters
+    # This block is the one you asked about. We MUST use model_init
+    # to get a fresh, untrained model for the final training run.
     best_trainer = Trainer(
-        args=training_args,
+        args=training_args,  # training_args now contains the best params + OOM fix
         tokenizer=tokenizer,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
@@ -109,9 +135,11 @@ def run_hyperparameter_search(
         data_collator=data_collator,
     )
 
-    # Re-train the model using the optimal settings
-    best_trainer.train()
-
-    # The function now RETURNS the trainer object (containing the best model)
-    # The user is responsible for saving the model externally.
+    # The function now RETURNS the trainer object (containing the best model yet to be trained)
+    # The user is responsible for training and saving the model externally.
     return best_run, best_trainer
+
+
+def train_save_best_model(best_trainer, save_path):
+    best_trainer.train()
+    best_trainer.save_model(save_path)
