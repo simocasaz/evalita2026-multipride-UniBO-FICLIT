@@ -299,7 +299,7 @@
 
 ---
 
-## 📅 2025-11-03
+## 📅 2025-11-04
 
 **Focus:** F1 type and mail to supervisor.
 
@@ -317,10 +317,26 @@
 
 ---
 
-## 📅 2025-11-10
+## 📅 2025-11-10 / 2025-11-15
 
-**Focus:** implementing HPS
+**Focus:** implementing HPS for umBERTo and ELECTRA
 
 **Work done:**
 
+- implemented hps
+- decided to work locally since my gpu is enough both for umBERTo and ELECTRA
+- run 15 trials with umBERTo with text transformed in lower-case
+- run 15 trials with umBERTo with base text
+- run 15 trials with ELECTRA with base text
+
 **Observations:**
+
+- With ELECTRA I got the best F1
+- umBERTo with lowercase-transformed text was better than umBERTo with normal
+  text
+
+**Next steps:**
+
+- Implement basic data augmentation
+- Try umBERTo with basic data augmentation
+- Try ELECTRA with basic data augmentation
