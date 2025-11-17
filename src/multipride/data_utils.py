@@ -1,8 +1,23 @@
+import pandas as pd
 import datasets as ds
 
 
-def load_split(file_format, file_path, split, test, columns, val_size, seed):
-    data = ds.load_dataset(file_format, data_files=file_path, split="train")
+def load_aug_split(
+    file_format: str,
+    file_path: str,
+    split: bool,
+    test: bool,
+    augmentation: str,
+    columns: list[str],
+    val_size: float,
+    seed: int,
+) -> ds.Dataset | ds.DatasetDict:
+    df = pd.read_csv(file_path)
+
+    if augmentation == "ros":
+        pass
+
+    data = ds.from_pandas(df)
 
     data = data.select_columns(columns)
 
