@@ -340,3 +340,20 @@
 - Implement basic data augmentation
 - Try umBERTo with basic data augmentation
 - Try ELECTRA with basic data augmentation
+
+---
+
+## 📅 2025-11-17
+
+**Focus:** Data augmentation strategy.
+
+**Work done:**
+
+- checked different data aug. strategies. Decided to start with random
+  oversampling, the simplest one to implement.
+
+**Observations:**
+
+-
+
+**Next steps:**
