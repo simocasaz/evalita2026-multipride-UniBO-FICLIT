@@ -1,5 +1,6 @@
 import pandas as pd
 import datasets as ds
+from sklearn.utils import shuffle
 
 
 def load_split(
@@ -12,7 +13,7 @@ def load_split(
     seed: int = 42,
     label_column: str = "label",
 ) -> ds.Dataset | ds.DatasetDict:
-    data = ds.load_dataset(file_path)
+    data = ds.load_dataset(file_format, data_files=file_path, split="train")
 
     data = data.select_columns(columns)
 
@@ -65,7 +66,7 @@ def augment_data(
 
         # 5. Shuffle the combined dataframe
         # This is CRITICAL. The Trainer needs shuffled data.
-        df_oversampled_shuffled = ds.shuffle(df_oversampled, random_state=42)
+        df_oversampled_shuffled = shuffle(df_oversampled, random_state=42)
 
         print(f"New oversampled dataset shape: {df_oversampled_shuffled.shape}")
         print(
@@ -74,4 +75,4 @@ def augment_data(
 
         data = df_oversampled_shuffled.reset_index(drop=True)
 
-        return ds.from_pandas(data)
+        return ds.Dataset.from_pandas(data)
