@@ -354,6 +354,21 @@
 
 **Observations:**
 
--
+- ROS is the simplest one, but I don't know if it's effective. I could also
+  simply double the data as it was done by one of the team (DH-FBK) to see if
+  the results are better.
 
-**Next steps:**
+---
+
+## 📅 2025-11-18
+
+**Focus:** ROS implementation and ROS test.
+
+**Work done:**
+
+- implemented and tested ROS with ELECTRA model.
+
+**Observations:**
+
+- Performances got worst with ROS. The model clearly overfits. I could try to
+  reduce the augmentation ratio.
