@@ -372,3 +372,18 @@
 
 - Performances got worst with ROS. The model clearly overfits. I could try to
   reduce the augmentation ratio.
+
+---
+
+## 📅 2025-11-20
+
+**Focus:** Good augmentation strategy search.
+
+**Work done:**
+
+- searched for best augmentation strategy.
+
+**Observations:**
+
+- I should write the supervisor to ask some suggestion about the data
+  augmentation strategy to use.
