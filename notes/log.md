@@ -388,18 +388,7 @@
 - I should write the supervisor to ask some suggestion about the data
   augmentation strategy to use.
 
-## 📅 2025-11-21
-
-**Focus:** Good augmentation strategy search.
-
-**Work done:**
-
-- searched for best augmentation strategy.
-
-**Observations:**
-
-- I should write the supervisor to ask some suggestion about the data
-  augmentation strategy to use.
+---
 
 ## 📅 2025-11-21
 
@@ -415,3 +404,18 @@
   have time to implement it. I'll try to twick a bit the random oversampling
   method to see if I can get better results. Before that though I should
   implement the basic context strategy for subtask 2a.
+
+---
+
+## 📅 2025-11-21
+
+**Focus:** Subtask 2a.
+
+**Work done:**
+
+- Understood which technique to try first with bios.
+
+**Observations:**
+
+- I will start by simply concatenating each bio with each tweet and I'll use the
+  ELECTRA-BASED model for testing.
