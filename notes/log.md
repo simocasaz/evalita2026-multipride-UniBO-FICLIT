@@ -387,3 +387,31 @@
 
 - I should write the supervisor to ask some suggestion about the data
   augmentation strategy to use.
+
+## 📅 2025-11-21
+
+**Focus:** Good augmentation strategy search.
+
+**Work done:**
+
+- searched for best augmentation strategy.
+
+**Observations:**
+
+- I should write the supervisor to ask some suggestion about the data
+  augmentation strategy to use.
+
+## 📅 2025-11-21
+
+**Focus:** Good augmentation strategy search.
+
+**Work done:**
+
+- Continued to search for best augmentation strategy.
+
+**Observations:**
+
+- Every data augmentation I find seem to be not so good for my case or I don't
+  have time to implement it. I'll try to twick a bit the random oversampling
+  method to see if I can get better results. Before that though I should
+  implement the basic context strategy for subtask 2a.
