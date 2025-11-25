@@ -407,7 +407,7 @@
 
 ---
 
-## 📅 2025-11-21
+## 📅 2025-11-22
 
 **Focus:** Subtask 2a.
 
@@ -419,3 +419,18 @@
 
 - I will start by simply concatenating each bio with each tweet and I'll use the
   ELECTRA-BASED model for testing.
+
+---
+
+## 📅 2025-11-22
+
+**Focus:** Subtask 2a.
+
+**Work done:**
+
+- Implemented bio tweet concatenation.
+
+**Observations:**
+
+- I tested the implementation and I found a bug to fix. I need to remove the
+  rows of the dataset that does not contain the bios.
