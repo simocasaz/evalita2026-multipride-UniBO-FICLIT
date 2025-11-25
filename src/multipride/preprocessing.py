@@ -52,5 +52,5 @@ def tokenize_batch(batch, tokenizer):
 
 def tokenize_batch_with_bios(batch, tokenizer):
     return tokenizer(
-        batch["text"], batch["user_bio"], truncation="only_second", max_length=256
+        batch["text"], batch["bio"], truncation="only_second", max_length=256
     )
