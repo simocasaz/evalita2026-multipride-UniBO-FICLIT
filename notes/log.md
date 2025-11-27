@@ -407,7 +407,7 @@
 
 ---
 
-## 📅 2025-11-22
+## 📅 2025-11-24
 
 **Focus:** Subtask 2a.
 
@@ -422,7 +422,7 @@
 
 ---
 
-## 📅 2025-11-22
+## 📅 2025-11-25
 
 **Focus:** Subtask 2a.
 
@@ -434,3 +434,32 @@
 
 - I tested the implementation and I found a bug to fix. I need to remove the
   rows of the dataset that does not contain the bios.
+
+---
+
+## 📅 2025-11-26
+
+**Focus:** Subtask 2a.
+
+**Work done:**
+
+- Implemented bio tweet concatenation.
+
+**Observations:**
+
+- I tested the implementation and I found a bug to fix. I need to remove the
+  rows of the dataset that does not contain the bios.
+
+---
+
+## 📅 2025-11-27
+
+**Focus:** Dataset cleaning, concatenation strategy testing.
+
+**Work done:**
+
+-
+
+**Observations:**
+
+-
