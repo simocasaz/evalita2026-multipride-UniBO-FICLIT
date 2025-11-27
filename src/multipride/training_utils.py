@@ -41,7 +41,7 @@ def run_hyperparameter_search(
         output_dir=output_dir,
         logging_dir=logging_dir,
         per_device_train_batch_size=32,  # This is the default, but Optuna will override
-        num_train_epochs=5,  # Default, Optuna will override
+        num_train_epochs=10,
         weight_decay=0.01,  # Default, Optuna will override
         learning_rate=2e-5,  # Default, Optuna will override
         warmup_steps=0,
