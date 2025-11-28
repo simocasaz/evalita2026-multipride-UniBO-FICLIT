@@ -19,6 +19,7 @@ def run_hyperparameter_search(
     n_trials,
     output_dir,
     logging_dir,
+    seed: int = 42,
 ):
     """
     Sets up the Trainer and executes the HPS using Optuna and W&B.
@@ -33,7 +34,7 @@ def run_hyperparameter_search(
     # 2. Define Training Arguments
     # These settings are shared across all trials unless overridden by hp_space
     training_args = TrainingArguments(
-        logging_strategy="steps",  # ADDED: Set logging strategy to steps
+        logging_strategy="steps",  # Set logging strategy to steps
         logging_steps=20,
         output_dir=output_dir,
         logging_dir=logging_dir,
@@ -42,8 +43,7 @@ def run_hyperparameter_search(
         weight_decay=0.01,  # Default, Optuna will override
         learning_rate=2e-5,  # Default, Optuna will override
         warmup_steps=0,
-        # Mixed Precision Training
-        fp16=True,  # <-- ADDED: Enables half-precision training (FP16) for speed/memory efficiency
+        fp16=True,  # Enables half-precision training (FP16) for speed/memory efficiency
         # Logging & Evaluation Setup (CRITICAL for W&B and HPS)
         evaluation_strategy="steps",
         eval_steps=20,
@@ -55,6 +55,7 @@ def run_hyperparameter_search(
         # W&B INTEGRATION
         report_to=["wandb"],  # Logs all metrics and trial configs to W&B
         disable_tqdm=False,
+        seed=seed,
     )
 
     # 3. Initialize Trainer with Early Stopping Callback
