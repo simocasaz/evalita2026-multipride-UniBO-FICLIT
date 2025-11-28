@@ -4,7 +4,6 @@ from transformers import (
     TrainingArguments,
     EarlyStoppingCallback,
 )
-import os
 
 
 def run_hyperparameter_search(
@@ -27,8 +26,6 @@ def run_hyperparameter_search(
     NOTE: You must pass your tokenized datasets (train_dataset, eval_dataset)
     and your initialized tokenizer to this function.
     """
-
-    os.environ["WANDB_PROJECT"] = wandb_project_name
 
     # 1b. Initialize Data Collator (CRITICAL for dynamic padding)
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
