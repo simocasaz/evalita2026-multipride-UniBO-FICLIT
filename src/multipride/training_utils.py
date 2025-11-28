@@ -4,6 +4,7 @@ from transformers import (
     TrainingArguments,
     EarlyStoppingCallback,
 )
+import os
 
 
 def run_hyperparameter_search(
@@ -27,11 +28,13 @@ def run_hyperparameter_search(
     NOTE: You must pass your tokenized datasets (train_dataset, eval_dataset)
     and your initialized tokenizer to this function.
     """
+    # Create dirs for saving and logging if they don't exist
+    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(logging_dir, exist_ok=True)
 
-    # 1b. Initialize Data Collator (CRITICAL for dynamic padding)
+    # Initialize data collator
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 
-    # 2. Define Training Arguments
     # These settings are shared across all trials unless overridden by hp_space
     training_args = TrainingArguments(
         logging_strategy="steps",  # Set logging strategy to steps
