@@ -3,25 +3,29 @@ from transformers import (
     Trainer,
     TrainingArguments,
     EarlyStoppingCallback,
+    PreTrainedTokenizer,
 )
+from transformers.trainer_utils import BestRun
+import datasets as ds
 import os
+from collections.abc import Callable
 
 
 def run_hyperparameter_search(
-    model_name,
-    train_dataset,
-    eval_dataset,
-    wandb_project_name,
-    tokenizer,
-    hp_space,
-    compute_metrics,
-    model_init,
-    compute_objective,
-    n_trials,
-    output_dir,
-    logging_dir,
+    model_name: str,
+    train_dataset: ds.Dataset,
+    eval_dataset: ds.Dataset,
+    wandb_project_name: str,
+    tokenizer: PreTrainedTokenizer,
+    hp_space: Callable,
+    compute_metrics: Callable,
+    model_init: Callable,
+    compute_objective: Callable,
+    n_trials: int,
+    output_dir: str,
+    logging_dir: str,
     seed: int = 42,
-):
+) -> tuple[BestRun, Trainer]:
     """
     Sets up the Trainer and executes the HPS using Optuna and W&B.
 
