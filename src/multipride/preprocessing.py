@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, PreTrainedTokenizer
 import re
 
 
@@ -36,7 +36,9 @@ def clean_text(text: str, transform_lower: bool = False) -> str:
     return text
 
 
-def load_tokenizer(model_name: str = "Musixmatch/umberto-commoncrawl-cased-v1"):
+def load_tokenizer(
+    model_name: str = "Musixmatch/umberto-commoncrawl-cased-v1",
+) -> PreTrainedTokenizer:
     """
     Loads and returns the tokenizer.
     """
