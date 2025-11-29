@@ -17,7 +17,6 @@ def run_hyperparameter_search(
     project_name: str,
     train_dataset: ds.Dataset,
     eval_dataset: ds.Dataset,
-    wandb_project_name: str,
     tokenizer: PreTrainedTokenizer,
     hp_space: Callable,
     compute_metrics: Callable,
@@ -84,7 +83,7 @@ def run_hyperparameter_search(
     )
 
     # 4. Execute Hyperparameter Search
-    print(f"\n--- Starting Optuna HPS with {wandb_project_name} on W&B ---")
+    print(f"\n--- Starting Optuna HPS with {project_name} on W&B ---")
 
     best_run = trainer.hyperparameter_search(
         hp_space=hp_space,  # Your function defining the search space
