@@ -9,7 +9,6 @@ from transformers.trainer_utils import BestRun
 import datasets as ds
 import os
 from collections.abc import Callable
-import wandb
 
 
 def run_hyperparameter_search(
@@ -37,8 +36,8 @@ def run_hyperparameter_search(
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(logging_dir, exist_ok=True)
 
-    # Initialize wandb with correct project name and entity
-    wandb.init(project=project_name, entity=os.getenv("WANDB-ENTITY"))
+    # Set the correct project name as an environmental variable
+    os.environ["WANDB_PROJECT"] = project_name
 
     # Initialize data collator
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
