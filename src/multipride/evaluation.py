@@ -7,5 +7,5 @@ def compute_metrics(eval_preds):
     logits, labels = eval_preds
     predictions = np.argmax(logits, axis=-1)
     return clf_metrics.compute(
-        predictions=predictions, references=labels, average="macro"
+        predictions=predictions, references=labels, average="macro", zero_division=0
     )
