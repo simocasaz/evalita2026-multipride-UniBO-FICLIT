@@ -60,13 +60,15 @@ def run_hyperparameter_search(
         save_strategy="steps",
         save_steps=20,
         load_best_model_at_end=True,
-        metric_for_best_model="f1",
+        metric_for_best_model="eval_f1",
         greater_is_better=True,
         # W&B INTEGRATION
         report_to=["wandb"],  # Logs all metrics and trial configs to W&B
         disable_tqdm=False,
         seed=seed,
     )
+
+    print("metric_for_best_model:", training_args.metric_for_best_model)
 
     # 3. Initialize Trainer with Early Stopping Callback
     # Early Stopping is key to stopping models that overfit early.
