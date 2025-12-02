@@ -439,11 +439,26 @@
 
 ## 📅 2025-11-26 / 2025-01-12
 
-**Focus:** Subtask 2a.
+**Focus:** General errors fixing.
 
 **Work done:**
 
 - Fixed F1 error in hps.
 - Fixed empty bios bug for concatenation strategy.
 
+---
+
+## 📅 2025-12-02
+
+**Focus:** Hps for phase 1.
+
+**Work done:**
+
+- Run hps for phase 1 with ELECTRA model.
+
 **Observations:**
+
+- The best model got a very high eval/f1 (0.90) in hps, but was also highly
+  overfitting. When the final model was retrained with the best parameters, it
+  got a much worse eval/f1 (0.84). Maybe I should run a multiobjective hps that
+  tries to maximize F1 while minimizing eval/loss.
