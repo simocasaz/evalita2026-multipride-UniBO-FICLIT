@@ -37,7 +37,7 @@ def clean_text(text: str, transform_lower: bool = False) -> str:
 
 
 def load_tokenizer(
-    model_name: str = "Musixmatch/umberto-commoncrawl-cased-v1",
+    model_name: str,
 ) -> PreTrainedTokenizer:
     """
     Loads and returns the tokenizer.
