@@ -1,4 +1,4 @@
-from transformers import Trainer
+from transformers import Trainer, TrainingArguments
 import pandas as pd
 
 
@@ -12,12 +12,19 @@ def run_inference(
     """
     Runs the fine-tuned model on the test dataset and saves predictions.
     """
-    trainer = Trainer(model=model, tokenizer=tokenizer)
+    inference_args = TrainingArguments(
+        output_dir="./tmp_inference_output",
+        report_to="none",  # ⬅️ This disables all reporting (W&B, TensorBoard, etc.)
+    )
+    trainer = Trainer(model=model, tokenizer=tokenizer, args=inference_args)
     predictions = trainer.predict(test_dataset)
 
     preds = predictions.predictions.argmax(-1)
 
     df = pd.DataFrame({"id": test_dataset["id"], "prediction": preds})
+
+    # Add lang column
+    df["lang"] = "it"
 
     if output_file_type == "tsv":
         df.to_csv(output_path, index=False, sep="\t")
