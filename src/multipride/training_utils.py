@@ -9,6 +9,7 @@ from transformers.trainer_utils import BestRun
 import datasets as ds
 import os
 from collections.abc import Callable
+import math
 
 
 def run_hyperparameter_search(
@@ -24,6 +25,7 @@ def run_hyperparameter_search(
     n_trials: int,
     output_dir: str,
     logging_dir: str,
+    bios: bool = False,
     seed: int = 42,
 ) -> tuple[BestRun, Trainer]:
     """
@@ -48,7 +50,6 @@ def run_hyperparameter_search(
         logging_steps=20,
         output_dir=output_dir,
         logging_dir=logging_dir,
-        per_device_train_batch_size=32,  # This is the default, but Optuna will override
         num_train_epochs=10,
         weight_decay=0.01,  # Default, Optuna will override
         learning_rate=2e-5,  # Default, Optuna will override
@@ -150,6 +151,51 @@ def run_hyperparameter_search(
     return best_run, best_trainer
 
 
-def train_save_best_model(best_trainer, save_path):
+def train_save_best_model(best_trainer, save_path, safe_batch_size=8):
+    """
+    Trains the best model while enforcing VRAM safety.
+    It recalculates Gradient Accumulation to preserve the Total Batch Size
+    using a smaller, safe per-device batch size.
+    """
+    # 1. Extract the 'Best' params currently set in the trainer
+    current_device_bs = best_trainer.args.per_device_train_batch_size
+    current_grad_acc = best_trainer.args.gradient_accumulation_steps
+
+    # 2. Calculate the Target Effective Batch Size (EBS) we want to maintain
+    target_ebs = current_device_bs * current_grad_acc
+
+    print("--- Optimization Target ---")
+    print(f"Best Params: Device BS={current_device_bs}, Grad Acc={current_grad_acc}")
+    print(f"Target Effective Batch Size: {target_ebs}")
+
+    # 3. Apply OOM Protection
+    if current_device_bs > safe_batch_size:
+        print(
+            f"\n⚠️ WARNING: Device Batch Size {current_device_bs} exceeds safe limit {safe_batch_size}."
+        )
+        print("Adjusting configuration to prevent OOM...")
+
+        # Force the safe batch size
+        new_device_bs = safe_batch_size
+
+        # Recalculate required accumulation steps to keep EBS the same
+        # Use math.ceil to ensure we don't drop below the target EBS
+        new_grad_acc = math.ceil(target_ebs / new_device_bs)
+
+        # Apply updates to the Trainer's arguments in-place
+        best_trainer.args.per_device_train_batch_size = new_device_bs
+        best_trainer.args.gradient_accumulation_steps = new_grad_acc
+
+        print(f"✅ Adjusted Config: Device BS={new_device_bs}, Grad Acc={new_grad_acc}")
+        print(
+            f"New Effective Batch Size: {new_device_bs * new_grad_acc} (Target was {target_ebs})"
+        )
+    else:
+        print("✅ Configuration is within safe memory limits.")
+
+    # 4. Train and Save
+    print("\nStarting training...")
     best_trainer.train()
+
+    print(f"Saving model to {save_path}...")
     best_trainer.save_model(save_path)
