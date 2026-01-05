@@ -53,6 +53,16 @@ def tokenize_batch(batch, tokenizer):
 
 
 def tokenize_batch_with_bios(batch, tokenizer):
+    # Clean the 'text' (Tweet) column defensively
+    safe_texts = [str(t) for t in batch["text"]]
+
+    # Clean the 'bio' column defensively
+    safe_bios = [str(b) if b is not None else "" for b in batch["bio"]]
+
+    # Pass the cleaned lists to the tokenizer
     return tokenizer(
-        batch["text"], batch["bio"], truncation="only_second", max_length=256
+        safe_texts,
+        safe_bios,
+        truncation="only_second",
+        max_length=256,
     )
