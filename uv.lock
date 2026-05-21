@@ -1,0 +1,8 @@
+version = 1
+revision = 3
+requires-python = ">=3.13"
+
+[[package]]
+name = "evalita2026-multipride-unibo-ficlit"
+version = "0.1.0"
+source = { virtual = "." }
