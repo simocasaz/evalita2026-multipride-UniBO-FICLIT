@@ -10,6 +10,7 @@ dependencies = [
     "numpy==1.26.4",
     "pandas==2.3.3",
     "spacy==3.8.9",
+    "it_core_news_lg",
 ]
 
 [project.scripts]
@@ -40,6 +41,7 @@ torch = [
   { index = "pytorch-cpu", extra = "cpu" },
   { index = "pytorch-cu117", extra = "cu117" },
 ]
+it_core_news_lg = { url = "https://github.com/explosion/spacy-models/releases/download/it_core_news_lg-3.8.0/it_core_news_lg-3.8.0-py3-none-any.whl"}
 
 [[tool.uv.index]]
 name = "pytorch-cpu"

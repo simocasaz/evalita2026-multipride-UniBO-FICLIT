@@ -426,6 +426,14 @@ wheels = [
 ]
 
 [[package]]
+name = "it-core-news-lg"
+version = "3.8.0"
+source = { url = "https://github.com/explosion/spacy-models/releases/download/it_core_news_lg-3.8.0/it_core_news_lg-3.8.0-py3-none-any.whl" }
+wheels = [
+    { url = "https://github.com/explosion/spacy-models/releases/download/it_core_news_lg-3.8.0/it_core_news_lg-3.8.0-py3-none-any.whl", hash = "sha256:b78582d0b2d05fd6509995f68ab7452efed7a27c6fbc5a071e9a9787a58c1e87" },
+]
+
+[[package]]
 name = "jedi"
 version = "0.20.0"
 source = { registry = "https://pypi.org/simple" }
@@ -611,6 +619,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "emoji" },
+    { name = "it-core-news-lg" },
     { name = "matplotlib" },
     { name = "numpy" },
     { name = "pandas" },
@@ -636,6 +645,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "emoji", specifier = "==2.15.0" },
+    { name = "it-core-news-lg", url = "https://github.com/explosion/spacy-models/releases/download/it_core_news_lg-3.8.0/it_core_news_lg-3.8.0-py3-none-any.whl" },
     { name = "matplotlib", specifier = "==3.10.7" },
     { name = "numpy", specifier = "==1.26.4" },
     { name = "pandas", specifier = "==2.3.3" },
