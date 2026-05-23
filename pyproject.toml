@@ -13,6 +13,7 @@ dependencies = [
     "it_core_news_lg",
     "transformers==4.49.0",
     "datasets==4.3.0",
+    "scikit-learn==1.7.2",
 ]
 
 [project.scripts]
