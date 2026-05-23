@@ -1,10 +1,3 @@
-"""multipride package public API.
-
-Re-export commonly used helpers so notebooks and external code can
-import them as `from multipride import clean_text` instead of
-reaching into submodules.
-"""
-
 from .preprocessing import (
     clean_text,
     load_tokenizer,
