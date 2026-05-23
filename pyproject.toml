@@ -11,6 +11,7 @@ dependencies = [
     "pandas==2.3.3",
     "spacy==3.8.9",
     "it_core_news_lg",
+    "transformers==4.49.0",
 ]
 
 [project.scripts]
