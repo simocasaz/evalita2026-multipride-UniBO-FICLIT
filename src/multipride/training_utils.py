@@ -25,6 +25,7 @@ def run_hyperparameter_search(
     n_trials: int,
     output_dir: str,
     logging_dir: str,
+    device: str,
     bios: bool = False,
     seed: int = 42,
 ) -> tuple[BestRun, Trainer]:
@@ -54,7 +55,6 @@ def run_hyperparameter_search(
         weight_decay=0.01,  # Default, Optuna will override
         learning_rate=2e-5,  # Default, Optuna will override
         warmup_steps=0,
-        fp16=True,  # Enables half-precision training (FP16) for speed/memory efficiency
         # Logging & Evaluation Setup (CRITICAL for W&B and HPS)
         evaluation_strategy="steps",
         eval_steps=20,
@@ -68,6 +68,9 @@ def run_hyperparameter_search(
         disable_tqdm=False,
         seed=seed,
     )
+
+    if device == "cuda":
+        setattr(training_args, "fp16", True)
 
     print("metric_for_best_model:", training_args.metric_for_best_model)
 
